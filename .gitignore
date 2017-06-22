@@ -1,0 +1,13 @@
+data/
+.DS_Store
+node_modules
+reporting/node_modules
+logs
+reporting/logs
+npm-debug.log
+test.js
+.vscode
+typings
+tsd.json
+*.tgz
+*.env
