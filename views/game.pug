@@ -1,7 +1,12 @@
 extends layout
 
-include mixins/_gameForm
-
 block content
   .inner
-    +gameForm()
+    h2= title
+      label(for="user1") User
+      input(type="text" name="user1" value=game.user1)
+
+      label(for="user2") User
+      input(type="text" name="user2" value=game.user2)
+
+      label(for="no") 

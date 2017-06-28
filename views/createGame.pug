@@ -2,7 +2,7 @@ extends layout
 
 block content
   .inner
-    form(action='/add/' method="POST" enctype="multipart/form-data")
+    form.form(action='/add/' method="POST")
       h2= title
       label(for="user1") User
       input(type="text" name="user1")
