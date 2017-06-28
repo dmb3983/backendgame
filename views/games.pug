@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  p hi
-    h1.display-3 Games
+  .inner
+    h2= title
       table
         thead
           tr: th Games
         tbody
           each game in games
-          tr
-            td 
-              a(href=`/game/${game.id})`)
+            tr
+              td 
+                a(href=`/game/${game.id})`)

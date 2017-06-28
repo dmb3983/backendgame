@@ -1,0 +1,12 @@
+mixin gameForm(game = {})
+  form(action=`/add/${game._id || ''}` method="POST" enctype="multipart/form-data")
+    pre= h.dump(game)
+    
+    label(for="email") User Name
+    input(type="text" name="email" value=user.email)
+
+    label(for="description") Description
+    textarea(name="description")= store.description
+    //- address, lng and lat
+    
+    input(type="submit" value="Save →" class="button")

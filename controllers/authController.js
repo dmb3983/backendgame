@@ -14,7 +14,7 @@ exports.login = passport.authenticate('local', {
 
 exports.logout = (req, res) => {
   req.logout();
-  req.flash('success', 'You are now logged out! 👋');
+  req.flash('success', 'You are now logged out!');
   res.redirect('/');
 };
 
@@ -32,7 +32,7 @@ exports.forgot = async (req, res) => {
   // 1. See if a user with that email exists
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    req.flash('error', 'No account with that email exists.');
+    req.flash('error', 'An email has been sent to that email address if that account exists.');
     return res.redirect('/login');
   }
   // 2. Set reset tokens and expiry on their account
@@ -91,6 +91,6 @@ exports.update = async (req, res) => {
   user.resetPasswordExpires = undefined;
   const updatedUser = await user.save();
   await req.login(updatedUser);
-  req.flash('success', '💃 Nice! Your password has been reset! You are now logged in!');
+  req.flash('success', 'Your password has been reset! You are now logged in!');
   res.redirect('/');
 };
