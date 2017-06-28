@@ -1,0 +1,8 @@
+extends layout
+
+include mixins/_gameForm
+
+block content
+  .inner
+    form.form(action=`/add/${game._id}` method="POST")
+      +gameForm()

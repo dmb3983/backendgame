@@ -8,7 +8,11 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 
 var gameSchema = new mongoose.Schema({
-  users: {
+  user1: {
+    type: String,
+    required: '2 or more users are required'
+  },
+  user2: {
     type: String,
     required: '2 or more users are required'
   },
@@ -18,4 +22,4 @@ var gameSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Game', gameSchema);
+module.exports = mongoose.model('game', gameSchema);

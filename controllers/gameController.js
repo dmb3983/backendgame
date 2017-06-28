@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Game = mongoose.model('Game');
-const User = mongoose.model('User');
+const Game = mongoose.model('game');
+const User = mongoose.model('user');
 const jimp = require('jimp');
 const uuid = require('uuid');
 
@@ -10,8 +10,9 @@ exports.homePage = (req, res) => {
 };
 
 exports.addGame = (req, res) => {
-  res.render('editGame', { title: 'Add Game' });
+  res.render('createGame', { title: 'Add Game' });
 };
+
 
 exports.createGame = async (req, res) => {
   req.body.author = req.user._id;
@@ -19,6 +20,13 @@ exports.createGame = async (req, res) => {
   req.flash('success', `Successfully Created ${game._id}.`);
   res.redirect(`/game/${game._id}`);
 };
+
+exports.getGame = async (req, res, next) => {
+  const game = await Game.findOne({ _id: req.params.id });
+  if (!game) return next();
+  res.render('Game', { game, title: game._id });
+};
+
 
 exports.getGames = async (req, res) => {
   const page = req.params.page || 1;
@@ -46,18 +54,13 @@ exports.getGames = async (req, res) => {
 };
 
 
-const confirmOwner = (store, user) => {
-  if (!user.author.equals(user._id)) {
-    throw Error('You must an be an admin or developer make edits!');
-  }
-};
+
 
 
 exports.editGame = async (req, res) => {
   // 1. Find the game given the ID
   const game = await Game.findOne({ _id: req.params.id });
   // 2. confirm they have permission to edit
-  confirmOwner(user._id, req.user);
   // 3. Render out the edit form for the game
   res.render('editGame', { title: `Edit ${game._id}`, game });
 };
@@ -73,17 +76,6 @@ exports.deleteGame = async (req, res) => {
 
 
 exports.updateGame = async (req, res) => {
-  // find and update the game
-  const game = await Game.findOneAndUpdate({ _id: req.params.id }, req.body, {
-    new: true, // return the new game data instead of the old
-    runValidators: true
-  }).exec();
-  req.flash('success', `Successfully updated <strong>${game.name}</strong>.`);
-  //res.redirect(`/stores/${store._id}/edit`);
-  // Redriect them the game page and tell them it worked
-};
-
-exports.deleteGame = async (req, res) => {
   // find and update the game
   const game = await Game.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true, // return the new game data instead of the old

@@ -10,9 +10,9 @@ mongoose.connection.on('error', (err) => {
   console.error(`Error Connecting → ${err.message}`);
 });
 
-require('./models/Game');
-require('./models/User');
-require('./models/UserGame');
+require('./models/game');
+require('./models/user');
+require('./models/usergame');
 require('./models/Achievements');
 
 const app = require('./app');

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .inner
+    form(action='/add/' method="POST" enctype="multipart/form-data")
+      h2= title
+      label(for="user1") User
+      input(type="text" name="user1")
+
+      label(for="user2") User
+      input(type="text" name="user2")
+
+      label(for="no") 
+
+      input(type="submit" value="Save →" class="button")

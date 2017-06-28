@@ -10,12 +10,12 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const userGameSchema = new mongoose.Schema({
   game: {
     type: mongoose.Schema.ObjectId,
-    ref: 'Game',
+    ref: 'game',
     required: 'A game number is required'
   },
   users: {
     type: mongoose.Schema.ObjectId,
-    ref: 'User',
+    ref: 'user',
     kills: String,
     headshots: String,
     achievements: String
@@ -43,4 +43,4 @@ function autopopulate(next) {
 userGameSchema.pre('find', autopopulate);
 userGameSchema.pre('findOne', autopopulate);
 
-module.exports = mongoose.model('UserGame', userGameSchema);
+module.exports = mongoose.model('usergame', userGameSchema);
