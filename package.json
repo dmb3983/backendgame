@@ -1,7 +1,7 @@
 {
-  "name": "firstapi",
+  "name": "backendgame",
   "version": "1.0.0",
-  "description": "first API",
+  "description": "edit game details",
   "now": {
     "dotenv": "variables.env.now"
   },
