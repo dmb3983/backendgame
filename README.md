@@ -13,8 +13,8 @@ The assumptions that I made for this project were as follows.
 #API you would expose and data models you would use. Any technology(s) can be used here. 
 
 1.	The Rest API would expose the player and game data to the dev/Admin. This would be done using mongoose(via express) to connect to the MongoDB.
-2.	MongoDB was chosen for its extensibility and performance. It would scale from 2 to 16 players without any issues.
+2.	MongoDB was chosen for its extensibility, performance, and security. It would scale from 2 to 16 players without any issues. MongoDB can set different permission level for as many user types as necessary. This way the game player could view there stats via a read-only connection from the API.
 3.	The app schemas from Mongoose would setup required fields for the data manipulation ensuring that the required fields were filled in and making sure the types were correct.
-4.	Passport.js would be used for authentication of the User. Mongo can set different permission level for as many user types as necessary. This way the game player could view there stats via a read-only connection from the API.
+4.	Passport.js would be used for authentication of the User. Passport salts the password and makes user Registration extremely simple and secure. 
 5.	The template that was chosen had the passport.js and mongoose setup built in, minimizing my work on customizing those setups (User, database setup)
 
